@@ -65,9 +65,24 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 **Preguntas**
 
 * ¿Qué es un Azure Function?
+    * Azure Functions le permite ejecutar pequeños fragmentos de código en un cli sin preocuparse por la infraestructura de la aplicación.Permite que la infraestructura de la nube se mantenga actualizada funcionando a escala.
+
+Una función se activa por un tipo específico de evento.Pueden incluir las respuestas a cambios en los datos, responder a mensajes, ejecutar según una programación o como resultado de una solicitud HTTP.
+
 * ¿Qué es serverless?
+    * La computación sin servidor es un modelo de ejecución de computación en la nube en el que el proveedor (En este caso Azure) de la nube ejecuta el servidor y administra dinámicamente la asignación de recursos de la máquina. El precio se basa en la cantidad real de recursos consumidos por una aplicación, en lugar de en unidades de capacidad compradas previamente.
+    
 * ¿Qué es el runtime y que implica seleccionarlo al momento de crear el Function App?
+    * El runtime es el ambiente de compilación compatible con los escenarios de producción que brinda el proveedor. En azure se puede configurar con tres versiones: 1.x, 2.xy 3.x. 
+    
+        En la siguiente imagen podemos observar las diferentes configuraciones de runtime:
+        ![](images/runtime.JPG)
+
+    De forma predeterminada, las aplicaciones de funciones creadas en Azure Portal y mediante la CLI de Azure están configuradas en la versión 3.x. Solo puede cambiar la versión en tiempo de ejecución a 1.x después de crear su aplicación de función, pero antes de agregar cualquier función. Se permite moverse entre 2.xy 3.x incluso con aplicaciones que tienen funciones, pero aún así se recomienda probar primero en una nueva aplicación.
+
 * ¿Por qué es necesario crear un Storage Account de la mano de un Function App?
+    * Al crearse una Function app se debe crear o vincular a una cuenta de Azure Storage de uso general que admita Blob, Queue y Table Storage. Esto se debe a que Functions se basa en Azure Storage para operaciones como la administración de desencadenadores y el registro de ejecuciones de funciones. Algunas cuentas de almacenamiento no admiten colas y tablas. Estas cuentas incluyen cuentas de almacenamiento solo de blobs, Azure Premium Storage y cuentas de almacenamiento de uso general con replicación ZRS. Estas cuentas no admitidas se filtran desde la hoja Cuenta de almacenamiento al crear una aplicación de función.
+    
 * ¿Cuáles son los tipos de planes para un Function App?, ¿En qué se diferencias?, mencione ventajas y desventajas de cada uno de ellos.
 * ¿Por qué la memoization falla o no funciona de forma correcta?
 * ¿Cómo funciona el sistema de facturación de las Function App?
